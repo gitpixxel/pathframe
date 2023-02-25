@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+
+    <div class="wall-color" id="wallcolor">
+        <div class="color-picker">
+            <span class="picker"><input id="colorpicker" type="color" value="#264796"></span>
+            <span class="picker-text">Wall Color</span>
+        </div>
+        <div class="door-btn frame">
+            <a href="#!" onclick="plusSlides(-1)"><img src="images/chevron-left.svg" alt="Prev"></a>
+            <span>Frame</span>
+            <a href="#!" onclick="plusSlides(1)"><img src="images/chevron-right.svg" alt="Next"></a>
+        </div>
+        <div class="door-btn">
+            <a href="#!" onclick="setIndex(-1)"><img src="images/chevron-left.svg" alt="Prev"></a>
+            <span>Door</span>
+            <a href="#!" onclick="setIndex(1)"><img src="images/chevron-right.svg" alt="Next"></a>
+        </div>
+       
+        <div class="door-img frame">
+            <img id="slideFrame" src="images/frame-1.png">
+        </div>
+        
+        <div class="door-img">
+                <img id="slideImage" src="images/door-1.png">
+        </div>
+        <img src="images/floor.jpg" alt="floor" class="floor">
+        <!-- next -->
+        
+    </div>
+
+
+<script>
+    let colorpicker = document.getElementById('colorpicker');
+    setInterval(()=>{
+        let color = colorpicker.value;
+        document.getElementById("wallcolor").style.backgroundColor = color;
+    }, 200);
+</script>
+
+<script>
+    var imageNo= 0;
+    var slideImage = document.getElementById('slideImage');
+    function setIndex(idx) {
+        imageNo = imageNo + idx ;
+        let imagesArray = [ 'images/door-1.png',
+                            'images/door-2.png',
+                            'images/door-3.png'];
+
+        slideImage.src = imagesArray[Math.abs(imageNo) % imagesArray.length];
+    }
+</script>
+<script>
+    var imageNo= 0;
+    var slideFrame = document.getElementById('slideFrame');
+    function plusSlides(idx) {
+        imageNo = imageNo + idx ;
+        let imagesArray = [ 'images/frame-1.png',
+                            'images/frame-2.png',
+                            'images/frame-3.png'];
+
+    slideFrame.src = imagesArray[Math.abs(imageNo) % imagesArray.length];
+    }
+</script>
+</body>
+</html>
